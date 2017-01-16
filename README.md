@@ -13,4 +13,5 @@ This php wrapper of PDFMake use the same style syntax using php objects!
 * The trick over here is the json encode function which encodes everything with the names of the properties declared on the server side as javascript objects of the pdfmake library ;).
 * Enjoy
 
+## The full documentation is here!!!
 ### [http://pdfmake.org/](http://pdfmake.org/)
