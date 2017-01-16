@@ -71,7 +71,13 @@ class PDFMake
 	 */
 	public $background;
 
-	/**
+    /**
+     * Set PDF Style
+     * @var object
+     */
+    public $styles;
+	
+    /**
 	 * Default Constructor
 	 */
 	public function __construct()
@@ -82,6 +88,7 @@ class PDFMake
 		$this->header = null;
 		$this->images = new stdClass();
 		$this->info = new stdClass();
+        $this->styles = new stdClass();
 		$this->pageOrientation = PDFMakePageOrientation::Portrait;
 		$this->pageSize = PDFMakePageSize::LETTER;
 	}
@@ -277,7 +284,7 @@ class PDFMake
         $this->images = $images;
         return $this;
     }
-    
+
     /**
      * info
      * @return pdfmakeinfo
@@ -355,6 +362,38 @@ class PDFMake
     public function setBackground($background)
     {
         $this->background = $background;
+        return $this;
+    }
+
+     /**
+     * background
+     * @return string
+     */
+    public function getStyles()
+    {
+        return $this->styles;
+    }
+
+    /**
+     * background
+     * @param array $PDFMakeTextStyle
+     * @return object
+     */
+    public function setStyles($PDFMakeTextStyle)
+    {
+        $this->styles = $PDFMakeTextStyle;
+        return $this;
+    }
+
+    /**
+     * background
+     * @param string $stylename
+     * @param object PDFMakeTextStyle
+     * @return object
+     */
+    public function addStyle($stylename, $styles)
+    {
+        $this->styles->$stylename = $styles;
         return $this;
     }
 

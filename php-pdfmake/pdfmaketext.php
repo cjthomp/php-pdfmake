@@ -20,7 +20,7 @@ class PDFMakeText
 	public $pageOrientation;
 	public $text;
 	public $width;
-	
+
 	/**
 	 * The default constructor
 	 */
@@ -32,13 +32,13 @@ class PDFMakeText
 		$this->fontSize = 12;
 		$this->italics = false;
 		$this->margin = array();
-		$this->styles = new stdClass();
+		$this->style = array();
 		$this->pageBreak = null;
 		$this->pageOrientation = $DocumentPDFPageOrientation;
 		$this->text = $text;
-		$this->width = 'auto';    	
+		$this->width = 'auto';
     }
-    
+
     /**
      * alignment
      * @return string
@@ -47,7 +47,7 @@ class PDFMakeText
     {
     	return $this->alignment;
     }
-    
+
     /**
      * alignment
      * @param string $alignment
@@ -58,7 +58,7 @@ class PDFMakeText
     	$this->alignment = $alignment;
     	return $this;
     }
-    
+
     /**
      * bold
      * @return string
@@ -67,7 +67,7 @@ class PDFMakeText
     {
     	return $this->bold;
     }
-    
+
     /**
      * bold
      * @param string $bold
@@ -78,7 +78,7 @@ class PDFMakeText
     	$this->bold = $bold;
     	return $this;
     }
-    
+
     /**
      * fontSize
      * @return string
@@ -87,7 +87,7 @@ class PDFMakeText
     {
     	return $this->fontSize;
     }
-    
+
     /**
      * fontSize
      * @param string $fontSize
@@ -98,7 +98,7 @@ class PDFMakeText
     	$this->fontSize = $fontSize;
     	return $this;
     }
-    
+
     /**
      * italic
      * @return boolean
@@ -107,7 +107,7 @@ class PDFMakeText
     {
     	return $this->italics;
     }
-    
+
     /**
      * italic
      * @param boolean $italics
@@ -118,7 +118,7 @@ class PDFMakeText
     	$this->italics = $italics;
     	return $this;
     }
-    
+
     /**
      * margin
      * @return string
@@ -127,7 +127,7 @@ class PDFMakeText
     {
     	return $this->margin;
     }
-    
+
     /**
      * margin
      * @param string $margin
@@ -138,26 +138,32 @@ class PDFMakeText
     	$this->margin = $margin;
     	return $this;
     }
-    
+
     /**
-     * Adds a new style for the current instance
      * @param string $stylename
-     * @param DocumentPDFTextStyles $obj
      */
-    public function AddStyle($stylename, $DocumentPDFTextStyles)
+    public function addStyle($stylename)
     {
-    	$this->styles->$stylename = $DocumentPDFTextStyles;
+    	$this->style[] = $DocumentPDFTextStyles;
     }
-    
+
+    /**
+     * @param array $styles
+     */
+    public function setStyle($styles)
+    {
+    	$this->style = $styles;
+    }
+
     /**
      * Gets the styles defined for this instance
      * @return DocumentPDFTextStyles
      */
     public function getStyles()
     {
-    	return $this->styles;
+    	return $this->style;
     }
-    
+
 
     /**
      * styles
